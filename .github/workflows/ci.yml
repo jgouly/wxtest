@@ -35,10 +35,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgl1-mesa-dev libgtk-3-dev
-          (cd subprojects && git clone --recursive --filter=blob:none https://github.com/wxWidgets/wxWidgets.git)
 
       - name: Configure
-        run: meson setup build
+        run: |
+          (cd subprojects && git clone --recursive --filter=blob:none https://github.com/wxWidgets/wxWidgets.git)
+          meson setup build
 
       - name: Build
         run: meson compile -v -C build
